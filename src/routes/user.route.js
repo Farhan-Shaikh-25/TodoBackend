@@ -5,7 +5,8 @@ import AuthCheck from "../middlewares/authCheck.js"
 export const userRoute = express.Router() 
 
 userRoute.get("/:userId",AuthCheck,async(req,res)=>{
-    res.json({"userName":await User.findOne({_id : req.params.userId}).select("userName")})
+    const user = await User.findOne({_id : req.params.userId}).select("userName")
+    res.json({"userName":user.userName})
 })
 
 
