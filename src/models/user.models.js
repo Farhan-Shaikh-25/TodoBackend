@@ -14,7 +14,6 @@
             type : String,
         },
         refreshToken: {
-            required: true,
             type: String,
             unique: true
         }
