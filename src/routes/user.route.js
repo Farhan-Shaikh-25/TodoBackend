@@ -22,6 +22,7 @@ userRoute.post("/login/", async(req, res) => {
     const userExists = await User.findOne(
         {userName: req.body.userName}
     )
+    if(userExists){
     let accessToken = await userExists.createAccessToken()
     let refreshToken = await userExists.createRefreshToken()
     userExists.refreshToken = refreshToken
@@ -32,7 +33,10 @@ userRoute.post("/login/", async(req, res) => {
                   "message":"valid " + userExists._id
         })
     }
-    else res.json({"message":"user does not exists or password is invalid!"})
+    else
+        res.json({"message":"Password invalid"})
+    }
+    else res.json({"message":"User does not exists"})
     
 })
 
