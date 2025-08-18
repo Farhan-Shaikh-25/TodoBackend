@@ -15,7 +15,7 @@ app.use(express.json())
 
 const allowedOrigin = [
     "http://localhost:5173",
-    "https://todoappweh.netlify.app"
+    "https://keeptask.netlify.app"
 ]
 app.use(cors({
     origin: (origin, callback) => {
